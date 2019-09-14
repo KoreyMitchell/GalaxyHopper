@@ -28,7 +28,7 @@ function handleTouchStart(evt) {
     const firstTouch = getTouches(evt)[0];                                      
     xDown = firstTouch.clientX;                                      
     yDown = firstTouch.clientY;
-    angle = Math.atan(yDown,xDown)
+    angle = Math.atan2(yDown,xDown)
       var xloc = parseFloat($d.css('left'));
       var yloc = parseFloat($d.css('top'));
       xloc += 4*Math.cos(4.8+ angle * Math.PI/180)
