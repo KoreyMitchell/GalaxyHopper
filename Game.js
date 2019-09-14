@@ -12,9 +12,9 @@ $(document).ready(function(e){
 
   function gameLoop() {
     /////
-    document.querySelector('body').addEventListener('touchstart', f);
-    document.querySelector('body').addEventListener('touchend', f);
-    document.querySelector('body').addEventListener('touchmove', f);
+    document.querySelector('document.body').addEventListener('touchstart', f);
+    document.querySelector('document.body').addEventListener('touchend', f);
+    document.querySelector('document.body').addEventListener('touchmove', f);
     
     function f(ev){
         console.alert( ev.touches, ev.type );
