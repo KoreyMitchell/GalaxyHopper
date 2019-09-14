@@ -15,7 +15,8 @@ $(document).ready(function(e){
   theElement.addEventListener("touchstart", handlerFunction, false);
   
   function handlerFunction(event) {
-  alert(e.xloc + ", " + e.yloc);
+    $d.css("top", event.yloc + "px");
+    $d.css("left", event.xloc + "px");
   }
 
   
