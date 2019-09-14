@@ -18,6 +18,14 @@ $(document).ready(function(e){
     
     function f(ev){
         console.alert( ev.touches, ev.type );
+        
+        var xloc = parseFloat($d.css('left'));
+        var yloc = parseFloat($d.css('top'));
+        angle = Math.atan2(ev.touches.yloc, ev.touches.xloc)
+        xloc += 4*Math.cos(4.8+ angle * Math.PI/180)
+        yloc += 4*Math.sin(4.8+ angle * Math.PI/180)
+        $d.css("top", yloc + "px");
+        $d.css("left", xloc + "px");
     }
 
 
