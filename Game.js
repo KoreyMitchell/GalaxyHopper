@@ -12,13 +12,13 @@ $(document).ready(function(e){
 
   function gameLoop() {
     /////
-    document.querySelector('.ball').addEventListener('touchstart', f);
-    document.querySelector('.ball').addEventListener('touchend', f);
-    document.querySelector('.ball').addEventListener('touchmove', f);
+    document.querySelector('body').addEventListener('touchstart', f);
+    document.querySelector('body').addEventListener('touchend', f);
+    document.querySelector('body').addEventListener('touchmove', f);
     
     function f(ev){
         console.alert( ev.touches, ev.type );
-        
+
         var xloc = parseFloat($d.css('left'));
         var yloc = parseFloat($d.css('top'));
         angle = Math.atan2(ev.touches.yloc, ev.touches.xloc)
