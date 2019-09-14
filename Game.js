@@ -10,7 +10,7 @@ $(document).ready(function(e){
   var $d = $(".ball");
   var angle = 0
 
-  var theElement = document.getElementById("Body");
+  var theElement = document.getElementById("body");
 
   theElement.addEventListener("touchstart", handlerFunction, false);
   
