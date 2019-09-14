@@ -10,7 +10,7 @@ $(document).ready(function(e){
   var $d = $(".ball");
   var angle = 0
 
-  $(document).on('touchstart', '#.ball', function(e) {
+  $(document).on('touchstart', 'body', function(e) {
     var touch = e.originalEvent.touches[0]
     var xPos = touch.xPos;
     var yPos = touch.yPos;
