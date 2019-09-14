@@ -35,7 +35,9 @@ function handleTouchStart(evt) {
       yloc += 4*Math.sin(4.8+ angle * Math.PI/180)
       $d.css("transform", "rotate("+angle+"deg)")
       $d.css("top", yloc + "px");
-      $d.css("left", xloc + "px");                                      
+      $d.css("left", xloc + "px");
+      xDown = 0
+      yDown = 0                                      
 }
 
 
