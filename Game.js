@@ -12,33 +12,13 @@ $(document).ready(function(e){
 
   function gameLoop() {
     /////
-    document.addEventListener('touchstart', handleTouchStart, false);        
-document.addEventListener('touchmove', handleTouchMove, false);
-
-var xDown = null;                                                        
-var yDown = null;
- 
-
-function getTouches(evt) {
-  return evt.touches ||             // browser API
-         evt.originalEvent.touches; // jQuery
-}                                                     
-
-function handleTouchStart(evt) {
-    const firstTouch = getTouches(evt)[0];                                      
-    xDown = firstTouch.clientX;                                      
-    yDown = firstTouch.clientY;
-    angle = Math.atan2(yDown,xDown)
-      var xloc = parseFloat($d.css('left'));
-      var yloc = parseFloat($d.css('top'));
-      xloc += 4*Math.cos(4.8+ angle * Math.PI/180)
-      yloc += 4*Math.sin(4.8+ angle * Math.PI/180)
-      $d.css("transform", "rotate("+angle+"deg)")
-      $d.css("top", yloc + "px");
-      $d.css("left", xloc + "px");
-      xDown = 0
-      yDown = 0                                      
-}
+    document.querySelector('.ball').addEventListener('touchstart', f);
+    document.querySelector('.ball').addEventListener('touchend', f);
+    document.querySelector('.ball').addEventListener('touchmove', f);
+    
+    function f(ev){
+        console.alert( ev.touches, ev.type );
+    }
 
 
 
