@@ -7,7 +7,7 @@ $(document).ready(function(e){
     delete keys[event.which];
   });
 
-  var $d = $(".ball");
+  var $d = $(".spaceShip");
   var angle = 0
 
   var theElement = document.getElementById("body");
@@ -17,16 +17,6 @@ $(document).ready(function(e){
   
 
   function gameLoop() {
-    /////
-    theElement.addEventListener("touchstart", handlerFunction, false);
-  
-    function handlerFunction(event) {
-      $d.css("top", event.yloc + "px");
-      $d.css("left", event.xloc + "px");
-    }
-
-
-
  
     if (angle >= 360){
       angle = 0
