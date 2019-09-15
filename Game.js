@@ -27,12 +27,12 @@ $(document).ready(function(e){
         $d.css("transform", "rotate("+angle+"deg)")
     }
     if (keys[40]) { //down
-        var xloc = parseFloat($d.css('left'));
-        var yloc = parseFloat($d.css('top'));
-        xloc += Math.cos(angle)
-        yloc += Math.sin(angle)
-        $d.css("top", yloc + 'px');
-        $d.css("left", xloc + 'px');
+        // var xloc = parseFloat($d.css('left'));
+        // var yloc = parseFloat($d.css('top'));
+        // xloc += Math.cos(angle)
+        // yloc += Math.sin(angle)
+        // $d.css("top", yloc + 'px');
+        // $d.css("left", xloc + 'px');
     }
     else if (keys[38]) { //up
       var xloc = parseFloat($d.css('left'));
