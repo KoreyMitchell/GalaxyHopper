@@ -1,6 +1,6 @@
 $(document).ready(function(e){
   var keys = {};
-
+  var forward;
   $(document).keydown(function(event){
     keys[event.which] = true;
   }).keyup(function(event){
@@ -35,16 +35,17 @@ $(document).ready(function(e){
         // $d.css("left", xloc + 'px');
     }
     else if (keys[38]) { //up
+      forward = true;
       var xloc = parseFloat($d.css('left'));
       var yloc = parseFloat($d.css('top'));
-      xloc += 4*Math.cos(4.8+ angle * Math.PI/180)
-      yloc += 4*Math.sin(4.8+ angle * Math.PI/180)
+      xloc += 7*Math.cos(4.8+ angle * Math.PI/180)
+      yloc += 7*Math.sin(4.8+ angle * Math.PI/180)
       $d.css("top", yloc + "px");
       $d.css("left", xloc + "px");
     }
- 
+    
+    setTimeout(gameLoop, 10);
 
-    setTimeout(gameLoop, 20);
   }
   gameLoop();
     
