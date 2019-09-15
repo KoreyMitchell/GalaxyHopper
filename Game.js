@@ -9,7 +9,7 @@ $(document).ready(function(e){
 
   var $d = $(".spaceShip");
   var angle = 0
-
+ 
   function gameLoop() {
     if (angle >= 360){
       angle = 0
