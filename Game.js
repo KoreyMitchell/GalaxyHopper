@@ -1,4 +1,11 @@
+
+
 $(document).ready(function(e){
+  $( "#StartButton" ).click(function() {
+    $( "#splashscreen" ).hide( 1000 );
+    $(".spaceShip").show();
+    $("body").show();
+  });
   var keys = {};
   var forward;
   $(document).keydown(function(event){
@@ -53,14 +60,15 @@ $(document).ready(function(e){
     return new bullet(xloc,yloc,angle);
   }
     
-class bullet {
+  class bullet {
     constructor(xval, yval, angle) {
       this.xval = xval;
       this.yval = yval;
       this.angle = angle;
     }
   }
-;
+  
+
 
   function update(bull) {
     $(".bullet").each(function() {
@@ -80,6 +88,7 @@ class bullet {
   var locked = false;
  
   function gameLoop() {
+    
     areaCheck();
     angleCheck(angle);
     if (keys[39]) {     //right
@@ -120,7 +129,6 @@ class bullet {
 
   }
   
-
 
   gameLoop();
     
