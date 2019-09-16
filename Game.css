@@ -9,8 +9,10 @@
 
 .bullet {
   width: 16px;
-  height: 16px;
-  background-color: red;
+  height: 40px;
+  transform: none;
+  
+  /* background-image: url("assets/bullet.png"); */
   position: absolute;
 }
 

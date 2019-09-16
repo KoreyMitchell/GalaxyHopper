@@ -12,6 +12,7 @@ $(document).ready(function(e){
   $(window).height();
   $(window).width();
   var checkTime = 0;
+  var bulletCount = 0;
   var currentTime = new Date()
 
   function areaCheck(){
@@ -45,20 +46,32 @@ $(document).ready(function(e){
 
  
 
-  function fireBullet(xloc,yloc) {
-    var bulletCount = 1;
-    $("body").append($("<div>").addClass("bullet").css({ "left" : xloc + 60, 'top' : yloc + 20 }));
+  function fireBullet(xloc,yloc,angle) {
+    bulletCount++;
+    var t = $("body").append($("<img src='assets/bullet.png'>").addClass("bullet").css({ "left" : xloc + 60, 'top' : yloc + 20 }));
+    t.attr('id', bulletCount);
+    return new bullet(xloc,yloc,angle);
+  }
+    
+class bullet {
+    constructor(xval, yval, angle) {
+      this.xval = xval;
+      this.yval = yval;
+      this.angle = angle;
     }
+  }
+;
 
-  function update() {
+  function update(bull) {
     $(".bullet").each(function() {
-        var bulletAngle = angle;
-        var oldLeft = $(this).offset().left;
-        var oldTop = $(this).offset().top;
-        oldLeft += 7*Math.cos(4.8+ angle * Math.PI/180)
-        oldTop += 7*Math.sin(4.8+ angle * Math.PI/180)
-        $(this).css("left", oldLeft);
-        $(this).css("top", oldTop);
+        bull.angle = angle;
+        bull.xval = $(this).offset().left;
+        bull.yval= $(this).offset().top;
+        bull.xval += 7*Math.cos((angle-90) * Math.PI/180)
+        bull.yval += 7*Math.sin((angle-90) * Math.PI/180)
+        $(this).css("left", bull.xval);
+        $(this).css("top", bull.yval);
+        // $(this).css("transform", "rotate("+angle+"deg)")
         
       
     });
@@ -78,7 +91,7 @@ $(document).ready(function(e){
         $d.css("transform", "rotate("+angle+"deg)")
     }
 
-    if (keys[40]) { //down
+    if (keys[32]) { //down
         if(!locked){
           
         locked = true;
@@ -86,9 +99,9 @@ $(document).ready(function(e){
         var xloc = parseFloat($d.css('left'));
         var yloc = parseFloat($d.css('top'));
         
-        fireBullet(xloc,yloc);
+        var bull = fireBullet(xloc,yloc,angle);
        
-        var i = setInterval(update ,50);
+        var i = setInterval(update(bull) ,50);
         setTimeout(function( ) { clearInterval( i );}, 5000);
         setTimeout(function( ) { locked = false;}, 250);
         }
