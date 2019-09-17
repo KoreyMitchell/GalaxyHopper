@@ -2,7 +2,7 @@
 
 $(document).ready(function(e){
   $( "#StartButton" ).click(function() {
-    $( "#splashscreen" ).hide( 1000 );
+    $( "#splashscreen" ).fadeOut( 1000 );
     $(".spaceShip").show();
     $("body").show();
   });
@@ -21,6 +21,39 @@ $(document).ready(function(e){
   var checkTime = 0;
   var bulletCount = 0;
   var currentTime = new Date()
+
+  function easing(val){
+    
+  }
+
+  // EasingFunctions = {
+  //   // no easing, no acceleration
+  //   linear: function (t) { return t },
+  //   // accelerating from zero velocity
+  //   easeInQuad: function (t) { return t*t },
+  //   // decelerating to zero velocity
+  //   easeOutQuad: function (t) { return t*(2-t) },
+  //   // acceleration until halfway, then deceleration
+  //   easeInOutQuad: function (t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t },
+  //   // accelerating from zero velocity 
+  //   easeInCubic: function (t) { return t*t*t },
+  //   // decelerating to zero velocity 
+  //   easeOutCubic: function (t) { return (--t)*t*t+1 },
+  //   // acceleration until halfway, then deceleration 
+  //   easeInOutCubic: function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 },
+  //   // accelerating from zero velocity 
+  //   easeInQuart: function (t) { return t*t*t*t },
+  //   // decelerating to zero velocity 
+  //   easeOutQuart: function (t) { return 1-(--t)*t*t*t },
+  //   // acceleration until halfway, then deceleration
+  //   easeInOutQuart: function (t) { return t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t },
+  //   // accelerating from zero velocity
+  //   easeInQuint: function (t) { return t*t*t*t*t },
+  //   // decelerating to zero velocity
+  //   easeOutQuint: function (t) { return 1+(--t)*t*t*t*t },
+  //   // acceleration until halfway, then deceleration 
+  //   easeInOutQuint: function (t) { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t }
+  // }
 
   function areaCheck(){
     var screeny = $(window).height();
@@ -53,30 +86,30 @@ $(document).ready(function(e){
 
  
 
-  function fireBullet(xloc,yloc,angle) {
+  function fireBullet(x,y,ang) {
     bulletCount++;
-    var t = $("body").append($("<img src='assets/bullet.png'>").addClass("bullet").css({ "left" : xloc + 60, 'top' : yloc + 20 }));
+    var t = $("body").append($("<img src='assets/bullet.png'>").addClass("bullet").css({ "left" : x + 60, 'top' : y + 20 }));
     t.attr('id', bulletCount);
-    return new bullet(xloc,yloc,angle);
+    var bull = new Bullet(x,y,ang);
+    return bull;
   }
     
-  class bullet {
-    constructor(xval, yval, angle) {
-      this.xval = xval;
-      this.yval = yval;
-      this.angle = angle;
-    }
-  }
   
+  function Bullet(x,y,ang) {
+    // `this` is the instance which is currently being created
+    
+    this.xloc =  x;
+    this.yloc = y;
+    this.angle = ang;
+    return this;
+    // No need to return, but you can use `return this;` if you want
+  }
 
 
   function update(bull) {
-    $(".bullet").each(function() {
-        bull.angle = angle;
-        bull.xval = $(this).offset().left;
-        bull.yval= $(this).offset().top;
-        bull.xval += 7*Math.cos((angle-90) * Math.PI/180)
-        bull.yval += 7*Math.sin((angle-90) * Math.PI/180)
+    $("[class^='bullet']").each(function() {
+        bull.xval += 7*Math.cos((bull.angle-90) * Math.PI/180)
+        bull.yval += 7*Math.sin((bull.angle-90) * Math.PI/180)
         $(this).css("left", bull.xval);
         $(this).css("top", bull.yval);
         // $(this).css("transform", "rotate("+angle+"deg)")
