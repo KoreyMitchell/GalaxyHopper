@@ -2,7 +2,7 @@
 
 $(document).ready(function(e){
   $( "#StartButton" ).click(function() {
-    $( "#splashscreen" ).fadeOut( 1000 );
+    $( "#splashscreen" ).fadeOut(1000);
     $(".spaceShip").show();
     $("body").show();
   });
