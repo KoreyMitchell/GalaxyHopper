@@ -84,6 +84,22 @@ $(document).ready(function(e){
     }
   }
 
+	function Bullet(x, y, speed, angle){
+		this.x = x;
+    this.y = y;
+    this.speed = speed;
+		this.angle = angle;
+  }
+  
+	Bullet.prototype.update = function(){        
+        // (!) here we calculate the vector (vx, vy) that represents the velocity
+		var vx = this.speed * Math.cos(this.angle-(Math.PI/2));
+		var vy = this.speed * Math.sin(this.angle-(Math.PI/2));
+		
+        // move the bullet 
+		this.x += vx;
+		this.y += vy;		
+	}
  
 
   function fireBullet(x,y,ang) {
