@@ -6,8 +6,15 @@ $(document).ready(function(e){
     $(".spaceShip").show();
     $("body").show();
   });
+
+  
+
+  $('body').on('touchstart', function() { 
+    $('.spaceShip').css("transform", "rotate("+angle+"deg)")
+  }); 
+
+
   var keys = {};
-  var forward;
   $(document).keydown(function(event){
     keys[event.which] = true;
   }).keyup(function(event){
@@ -20,40 +27,10 @@ $(document).ready(function(e){
   $(window).width();
   var checkTime = 0;
   var bulletCount = 0;
-  var currentTime = new Date()
+  
+  
 
-  function easing(val){
-    
-  }
-
-  // EasingFunctions = {
-  //   // no easing, no acceleration
-  //   linear: function (t) { return t },
-  //   // accelerating from zero velocity
-  //   easeInQuad: function (t) { return t*t },
-  //   // decelerating to zero velocity
-  //   easeOutQuad: function (t) { return t*(2-t) },
-  //   // acceleration until halfway, then deceleration
-  //   easeInOutQuad: function (t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t },
-  //   // accelerating from zero velocity 
-  //   easeInCubic: function (t) { return t*t*t },
-  //   // decelerating to zero velocity 
-  //   easeOutCubic: function (t) { return (--t)*t*t+1 },
-  //   // acceleration until halfway, then deceleration 
-  //   easeInOutCubic: function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 },
-  //   // accelerating from zero velocity 
-  //   easeInQuart: function (t) { return t*t*t*t },
-  //   // decelerating to zero velocity 
-  //   easeOutQuart: function (t) { return 1-(--t)*t*t*t },
-  //   // acceleration until halfway, then deceleration
-  //   easeInOutQuart: function (t) { return t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t },
-  //   // accelerating from zero velocity
-  //   easeInQuint: function (t) { return t*t*t*t*t },
-  //   // decelerating to zero velocity
-  //   easeOutQuint: function (t) { return 1+(--t)*t*t*t*t },
-  //   // acceleration until halfway, then deceleration 
-  //   easeInOutQuint: function (t) { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t }
-  // }
+  
 
   function areaCheck(){
     var screeny = $(window).height();
@@ -84,57 +61,48 @@ $(document).ready(function(e){
     }
   }
 
-	function Bullet(x, y, speed, angle){
-		this.x = x;
-    this.y = y;
-    this.speed = speed;
-		this.angle = angle;
-  }
+  // function fireLaser() {
+  //   let laser = createLaserElement()
+  //   mainPlayArea.appendChild(laser)
+  //   // let laserSFX = new Audio('audio/laser-sfx.m4a')
+  //   // laserSFX.play()
+  //   moveLaser(laser)
+  // }
+  // const shooter = document.getElementsByClassName("spaceShip")
+  // function createLaserElement() {
+  //   let xPosition = parseInt(window.getComputedStyle(shooter).getPropertyValue('left'))
+  //   let yPosition = parseInt(window.getComputedStyle(shooter).getPropertyValue('top'))
+  //   let newLaser = document.createElement('img')
+  //   newLaser.src = 'images/bullet.png'
+  //   newLaser.classList.add('bullet')
+  //   newLaser.style.left = `${xPosition}px`
+  //   newLaser.style.top = `${yPosition - 10}px`
+  //   return newLaser
+  // }
+
+  // function moveLaser(laser) {
+  //   let laserInterval = setInterval(() => {
+  //     let xPosition = parseInt(laser.style.left)
+  //     // let monsters = document.querySelectorAll(".monster")
+  //     // monsters.forEach(monster => {
+  //     //   if (checkLaserCollision(laser, monster)) {
+  //     //     // let explosion = new Audio('audio/explosion.m4a')
+  //     //     // explosion.play()
+  //     //     monster.src = "images/bullet.png"
+  //     //     monster.classList.remove("monster")
+  //     //     monster.classList.add("dead-monster")
+  //     //     scoreCounter.innerText = parseInt(scoreCounter.innerText) + 100
+  //     //   }
+  //     // })
+  //     if (xPosition === 340) {
+  //       laser.remove()
+  //     } else {
+  //       laser.style.left = `${xPosition + 4}px`
+  //     }
+  //   }, 10)
+  // }
+
   
-	Bullet.prototype.update = function(){        
-        // (!) here we calculate the vector (vx, vy) that represents the velocity
-		var vx = this.speed * Math.cos(this.angle-(Math.PI/2));
-		var vy = this.speed * Math.sin(this.angle-(Math.PI/2));
-		
-        // move the bullet 
-		this.x += vx;
-		this.y += vy;		
-	}
- 
-
-  function fireBullet(x,y,ang) {
-    bulletCount++;
-    var t = $("body").append($("<img src='assets/bullet.png'>").addClass("bullet").css({ "left" : x + 60, 'top' : y + 20 }));
-    t.attr('id', bulletCount);
-    var bull = new Bullet(x,y,ang);
-    return bull;
-  }
-    
-  
-  function Bullet(x,y,ang) {
-    // `this` is the instance which is currently being created
-    
-    this.xloc =  x;
-    this.yloc = y;
-    this.angle = ang;
-    return this;
-    // No need to return, but you can use `return this;` if you want
-  }
-
-
-  function update(bull) {
-    $("[class^='bullet']").each(function() {
-        bull.xval += 7*Math.cos((bull.angle-90) * Math.PI/180)
-        bull.yval += 7*Math.sin((bull.angle-90) * Math.PI/180)
-        $(this).css("left", bull.xval);
-        $(this).css("top", bull.yval);
-        // $(this).css("transform", "rotate("+angle+"deg)")
-        
-      
-    });
-  }
-
-  var locked = false;
  
   function gameLoop() {
     
@@ -150,19 +118,15 @@ $(document).ready(function(e){
     }
 
     if (keys[32]) { //down
-        if(!locked){
-          
-        locked = true;
+        fireLaser();
+     
+      
         
-        var xloc = parseFloat($d.css('left'));
-        var yloc = parseFloat($d.css('top'));
-        
-        var bull = fireBullet(xloc,yloc,angle);
        
-        var i = setInterval(update(bull) ,50);
+        var i = setInterval(update ,50);
         setTimeout(function( ) { clearInterval( i );}, 5000);
-        setTimeout(function( ) { locked = false;}, 250);
-        }
+       
+        
   }
     else if (keys[38]) { //up
       forward = true;
