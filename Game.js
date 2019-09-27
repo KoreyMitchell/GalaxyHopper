@@ -267,7 +267,7 @@ $(document).ready(function () {
 				setTimeout(function () {
 					locked = false;
 				}, 250);
-			}
+			} 
 		}
 		if (keys[direction.UP]) {
 			accelerationX = game.SMOOTH_ACCELERATION_CONST * Math.cos(4.8 + (angle * Math.PI) / 180);
