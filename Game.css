@@ -4,51 +4,128 @@
 	position: absolute;
 	transform: none;
 	display: none;
-}
-
-.bullet {
+  }
+  
+  .bullet {
 	width: 16px;
 	height: 40px;
 	transform: none;
 	position: absolute;
-}
-
-.asteroid {
-	width: 100px;
-	height: 100px;
+  }
+  
+  .asteroid {
+	width: 75px;
+	height: 75px;
 	transform: none;
 	position: absolute;
-}
-
-#splashscreen {
-	background-image: url('assets/cover.png');
+  }
+  
+  #splashscreen {
+	background-image: url("assets/cover.png");
 	height: 100%;
 	margin: 0px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-}
-
-#StartButton {
+  }
+  
+  /* #gameOver {
+	  background-image: url('assets/GameOver.gif');
+	  height: 100%;
+	  margin: 0px;
+	  background-position: center;
+	  background-repeat: no-repeat;
+	  background-size: contain;
+	  display: none;
+  } */
+  
+  #StartButton {
 	width: 10%;
 	left: 60%;
 	bottom: 20%;
 	position: absolute;
-}
-
-html {
+  }
+  
+  #gameLifesDiv {
 	height: 100%;
-}
-
-body{
-	background-image: url('https://media2.giphy.com/media/RHIKETUlUINYvV7CAO/giphy.gif');
+	display: none;
+  }
+  
+  #gameScore {
+	height: 100%;
+  
+	font-family: gameOverFont;
+	display: none;
+	font-size: 100px;
+	color: antiquewhite;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	/* left: 50%;
+		-ms-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%); */
+  }
+  
+  @font-face {
+	font-family: gameOverFont;
+	src: url(assets/ARCADECLASSIC.TTF);
+  }
+  
+  #gameOver {
+	animation: blinkingText 0.8s infinite;
+	font-family: gameOverFont;
+	display: none;
+	font-size: 150px;
+	color: antiquewhite;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+  }
+  @keyframes blinkingText {
+	0% {
+	  color: antiquewhite;
+	}
+	49% {
+	  color: antiquewhite;
+	}
+	50% {
+	  color: transparent;
+	}
+	99% {
+	  color: transparent;
+	}
+	100% {
+	  color: antiquewhite;
+	}
+  }
+  
+  #gameOver2 {
+	font-family: "Courier New", Courier, monospace;
+	display: none;
+	font-size: 30px;
+	color: antiquewhite;
+	margin-top: 70px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+  }
+  
+  html {
+	height: 100%;
+  }
+  
+  body {
+	background-image: url("https://media2.giphy.com/media/RHIKETUlUINYvV7CAO/giphy.gif");
 	background-size: cover;
 	height: 100%;
-	padding:0;
-	margin:0;
+	padding: 0;
+	margin: 0;
 	overflow: unset;
-
-}
-
-
-
+  }
+  
